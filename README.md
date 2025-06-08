@@ -213,9 +213,7 @@ $data = [
 
 // Store payment request in DB
 TransactionService::createPayment($data);
-php
-Copy
-Edit
+```
 
 ---
 ## 📁 Folder Structure
