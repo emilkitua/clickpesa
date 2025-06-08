@@ -1,0 +1,29 @@
+{
+  "name": "emilkitua/clickpesa",
+  "description": "Laravel integration for ClickPesa API",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Emil Kitua",
+      "email": "kituaemil@egktech.co.tz"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "EmilKitua\\\\ClickPesa\\\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "EmilKitua\\\\ClickPesa\\\\ClickPesaServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "php": "^8.0",
+    "illuminate/support": "^9.0|^10.0|^11.0",
+    "guzzlehttp/guzzle": "^7.0"
+  }
+}
