@@ -32,7 +32,7 @@ If you're installing from a local path or custom repository, configure it in you
 Then run:
 
 ```bash
-composer require emilkitua/clickpesa:dev-main
+composer require emilkitua/clickpesa
 ```
 
 ---
