@@ -32,7 +32,7 @@ If you're installing from a local path or custom repository, configure it in you
 Then run:
 
 ```bash
-composer require emilkitua/clickpesa
+composer require emilkitua/clickpesa:dev-main
 ```
 
 ---
@@ -165,6 +165,59 @@ Refer to ClickPesa API docs for full request/response formats.
 
 ---
 
+## Database
+
+This package creates a table named `clickpesa_payments` to store payment transactions.
+
+### Table Structure: `clickpesa_payments`
+
+| Column           | Type             | Description                                  |
+|------------------|------------------|----------------------------------------------|
+| id               | bigint (PK)      | Auto-increment primary key                    |
+| reference_id     | string, unique   | Internal reference ID for the payment        |
+| external_id      | string, nullable | ClickPesa transaction ID (from API response)|
+| payment_method   | enum ('ussd','card') | Payment method used                         |
+| phone_number     | string, nullable | Phone number used for USSD or card payments  |
+| card_number_masked| string, nullable | Masked card number (only for card payments)  |
+| amount           | decimal(15,2)    | Payment amount                                |
+| currency         | string (default 'TZS') | Currency code                              |
+| status           | enum            | Current status: pending, processing, successful, failed, cancelled |
+| status_detail    | string, nullable | Additional status info or error messages     |
+| request_payload  | json, nullable   | JSON payload sent to ClickPesa API           |
+| response_payload | json, nullable   | JSON response from ClickPesa API              |
+| paid_at          | timestamp, nullable | When payment was completed                  |
+| created_at       | timestamp        | When request was created                       |
+| updated_at       | timestamp        | When record was last updated                   |
+
+The table helps track payment requests, responses, and status updates.
+
+---
+
+## Usage
+
+When initiating a USSD or card payment, you can store the payment details automatically via the provided `TransactionService`:
+
+```php
+use EmilKitua\ClickPesa\Models\ClickPesaPayment;
+use EmilKitua\ClickPesa\Services\TransactionService;
+
+// Example data for initiating payment
+$data = [
+    'reference_id' => 'ORDER12345',
+    'payment_method' => 'ussd', // or 'card'
+    'phone_number' => '255712345678',
+    'amount' => 10000,
+    'currency' => 'TZS',
+    'request_payload' => $requestPayloadJson,  // API request data as JSON string or array
+];
+
+// Store payment request in DB
+TransactionService::createPayment($data);
+php
+Copy
+Edit
+
+---
 ## 📁 Folder Structure
 
 ```

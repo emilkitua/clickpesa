@@ -1,6 +1,6 @@
 <?php
 
-namespace YourVendor\ClickPesa;
+namespace EmilKitua\ClickPesa;
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
