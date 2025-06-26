@@ -11,13 +11,13 @@
   ],
   "autoload": {
     "psr-4": {
-      "EmilKitua\\\\ClickPesa\\\\": "src/"
+      "EmilKitua\\ClickPesa\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "EmilKitua\\\\ClickPesa\\\\ClickPesaServiceProvider"
+        "EmilKitua\\ClickPesa\\ClickPesaServiceProvider"
       ]
     }
   },
