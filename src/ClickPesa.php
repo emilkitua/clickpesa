@@ -32,8 +32,8 @@ class ClickPesa
                 'grant_type' => 'client_credentials',
             ]);
 
-        $token = $response['access_token'];
-        Cache::put('clickpesa_token', $token, $response['expires_in'] - 60);
+        $token = $response['token'];
+        Cache::put('clickpesa_token', $token, 360);
 
         return $token;
     }
