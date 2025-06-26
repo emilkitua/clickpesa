@@ -32,8 +32,6 @@ class ClickPesa
             ->post($this->authUrl, [
                 'grant_type' => 'client_credentials',
             ]);
-        
-        Log::info('Log request', context: $response->json());
 
         $token = $response['token'];
         Cache::put('clickpesa_token', $token, 360);
