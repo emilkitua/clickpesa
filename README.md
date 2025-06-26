@@ -193,6 +193,21 @@ The table helps track payment requests, responses, and status updates.
 
 ---
 
+## Usage in Laravel app after installing your package
+Just run:
+
+```bash
+php artisan migrate
+```
+Laravel will include and run your package migration along with the app’s migrations.
+
+## Optional: publish migration to app if the user wants to customize
+```bash
+php artisan vendor:publish --tag=clickpesa-migrations
+```
+
+---
+
 ## Usage
 
 When initiating a USSD or card payment, you can store the payment details automatically via the provided `TransactionService`:
