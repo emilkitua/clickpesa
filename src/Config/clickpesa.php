@@ -16,6 +16,6 @@ return [
 
     'client_secret' => env('CLICKPESA_CLIENT_SECRET'),
 
-    'base_url' => env('CLICKPESA_BASE_URL', 'https://api.clickpesa.com'),
+    'base_url' => env('CLICKPESA_BASE_URL', 'https://api.clickpesa.com/third-parties'),
 
 ];
