@@ -17,6 +17,7 @@ class CreateClickpesaPaymentsTable extends Migration
 
             // Payment method & metadata
             $table->enum('payment_method', ['ussd', 'card'])->index();
+            $table->string('channel')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('card_number_masked')->nullable(); // only if card
             $table->decimal('amount', 15, 2);
